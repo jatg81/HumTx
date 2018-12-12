@@ -1,0 +1,5 @@
+{
+    "board": "Moteino:avr:Moteino",
+    "sketch": "HumTx.ino",
+    "port": "COM10"
+}
