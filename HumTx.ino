@@ -28,9 +28,6 @@ const int netGroup = 210;                                                       
 float levelmm,humAmb,tempAmb;
 typedef struct { int dat0,dat1,dat2,dat3,dat4;} PayloadTX;       
 PayloadTX humtx; 
-//typedef struct {byte setHum;} PayloadRX;       
-//PayloadRX humrx; 
-
 
 void getTankLevel (){ //513 ms
   //levelmm=alfa*float(sensorLevel.readAvgDisctanceInMm(50))+(levelmm*(1-alfa));
@@ -50,14 +47,11 @@ void getTankLevel (){ //513 ms
         errCode=30;
       }
     }
-    else{
-      levelperc=(0,0.0633*pow(levelmm,2)-10.096*levelmm+402.22);
-    }
+    else levelperc=(0,0.0633*pow(levelmm,2)-10.096*levelmm+402.22);
   }
 }
 
-void sendData ()
-{
+void sendData (){
    humtx.dat0=tempAmb*10;
    humtx.dat1=humAmb*10;
    humtx.dat2=levelperc;
@@ -66,8 +60,7 @@ void sendData ()
    rf69_sendNow (nodeId, &humtx, sizeof humtx);                //Envio de datos          
 }
 
-void printdata ()
-{
+void printdata (){
   Serial.print("Distance: ");
   Serial.print(levelmm);
   Serial.print("mm");
@@ -109,8 +102,6 @@ void setup() {
   
   rf69_initialize(nodeId, RF_freq, netGroup);
   cloopTime1,cloopTime2 = millis();
-  
-
 }
 
 void loop(){
