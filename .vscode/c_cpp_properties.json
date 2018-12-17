@@ -12,7 +12,9 @@
                 "C:\\Users\\LAP_DELL\\AppData\\Local\\Arduino15\\packages\\Moteino\\hardware\\avr\\1.4.0\\**",
                 "C:\\Users\\LAP_DELL\\AppData\\Local\\Arduino15\\packages\\Moteino\\hardware\\samd\\1.2.0\\**"
             ],
-            "forcedInclude": [],
+            "forcedInclude": [
+                "C:\\Users\\LAP_DELL\\AppData\\Local\\Arduino15\\packages\\arduino\\hardware\\avr\\1.6.23\\cores\\arduino\\Arduino.h"
+            ],
             "intelliSenseMode": "msvc-x64"
         }
     ],
