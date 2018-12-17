@@ -1,6 +1,5 @@
 #include <hcsr04.h>
 #include <DHT.h>
-#include <PinChangeInt.h>
 #include <RF69Mod.h>
 
 #define TRIG_PIN      3
@@ -74,7 +73,11 @@ void printdata (){
   Serial.print(" status: ");
   Serial.print(status);
   Serial.print(" errcode: ");
-  Serial.println(errCode);
+  Serial.print(errCode);
+  Serial.print(" TK: ");
+  Serial.print(!digitalRead(SW_NOT_TANK));
+  Serial.print(" SW-HI: ");
+  Serial.println(!digitalRead(SW_HI_LEVEL));
 }
 
 void setup() {    
@@ -84,7 +87,7 @@ void setup() {
   pinMode(SW_HI_LEVEL, INPUT);
   digitalWrite(SW_HI_LEVEL, HIGH);
   pinMode(COOLER, OUTPUT);
-  digitalWrite(COOLER, LOW);
+  digitalWrite(COOLER, HIGH);
   pinMode(PUMP, OUTPUT);
   digitalWrite(PUMP, HIGH);
   pinMode(LED, OUTPUT);
@@ -92,14 +95,14 @@ void setup() {
   sensorLevel.init(TRIG_PIN, ECHO_PIN);
   sensorLevel.setDelayBetweenAvgMeasurementsInMs(9);
   levelmm=sensorLevel.readAccurateDisctanceInMm();
-  dht.setup(DHTPin);
-  Serial.begin(9600); // Starts the serial communication
-
-  for(int j=0;j<15;j++){
-    digitalWrite(LED, !digitalRead(LED));
-    delay(200);
-  }
   
+  //Serial.begin(9600); // Starts the serial communication
+
+  for(int j=0;j<20;j++){
+    digitalWrite(LED, !digitalRead(LED));
+    delay(250);
+  }
+  dht.setup(DHTPin);
   rf69_initialize(nodeId, RF_freq, netGroup);
   cloopTime1,cloopTime2 = millis();
 }
@@ -120,7 +123,7 @@ void loop(){
   }
 
   getTankLevel ();
-  if(levelmm<40 || !digitalRead(SW_HI_LEVEL)){
+  if(levelmm<40  && !digitalRead(SW_NOT_TANK)){
     digitalWrite(PUMP, LOW);
   }
   if(levelmm>85){
@@ -131,14 +134,22 @@ void loop(){
   if(currentTime-cloopTime1 >= 1000) {
     cloopTime1 = currentTime;
     sendData();                                                 //Transmisión de datos por RF cada 1 segundo
-    printdata();
+    //printdata();
   }
   
   if(currentTime-cloopTime2 >= 5000) {
     cloopTime2 = currentTime;
-    tempAmb=dht.getTemperature();
-    tempAmb=isnan(tempAmb)?-127 :tempAmb;
-    humAmb=dht.getHumidity();
-    humAmb=isnan(humAmb)?-127 :humAmb;
+    for (int k=0;k<3;k++){
+      tempAmb=dht.getTemperature();
+      if(!isnan(tempAmb)) break;
+      tempAmb=-127;
+      delay(500);
+    }
+    for (int k=0;k<3;k++){
+      humAmb=dht.getHumidity();
+      if(!isnan(humAmb)) break;
+      humAmb=-127;
+      delay(500);
+    }
   }
 }
