@@ -17,9 +17,9 @@
 #define HI_LEVEL_MM   40   
 #define alfa          0.2
 
-
 HCSR04 sensorLevel;
 DHT dht;
+
 unsigned long currentTime,cloopTime1,cloopTime2;
 int levelperc,status,errCode;
 const int nodeIdEmonPi=5;                                                                            // Id del EmonPi
