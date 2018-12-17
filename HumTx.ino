@@ -12,9 +12,9 @@
 #define SW_HI_LEVEL   14
 
 #define RF_freq       RF69_433MHZ                                                               //Frecuencia de transmision 433Mhz
-#define LO_LEVEL_MM   70  
-#define HI_LEVEL_MM   40   
-#define alfa          0.2
+#define LO_LEVEL_MM   70                                                                        //Distancia en mm bajo nivel
+#define HI_LEVEL_MM   40                                                                        //Distancia en mm alto nivel (minima distancia que puede leer el sensor 33mm)
+#define alfa          0.2                                                                       //Factor filtro EMA
 
 HCSR04 sensorLevel;
 DHT dht;
@@ -28,9 +28,8 @@ float levelmm,humAmb,tempAmb;
 typedef struct { int dat0,dat1,dat2,dat3,dat4;} PayloadTX;       
 PayloadTX humtx; 
 
-void getTankLevel (){ //513 ms
-  //levelmm=alfa*float(sensorLevel.readAvgDisctanceInMm(50))+(levelmm*(1-alfa));
-  levelmm=alfa*float(sensorLevel.readAvgDisctanceInMm(50))+(levelmm*(1-alfa));
+void getTankLevel (){ //Función que obtiene el nivel del tanque en porcentaje
+  levelmm=alfa*float(sensorLevel.readAvgDisctanceInMm(50))+(levelmm*(1-alfa)); //Se filtra el promedio de 50 lecturas del sensor de nivel
   if(levelmm > LO_LEVEL_MM){
       levelperc=0;
       if(levelmm > LO_LEVEL_MM + 40){
@@ -46,7 +45,7 @@ void getTankLevel (){ //513 ms
         errCode=30;
       }
     }
-    else levelperc=(0,0.0633*pow(levelmm,2)-10.096*levelmm+402.22);
+    else levelperc=(0,0.0633*pow(levelmm,2)-10.096*levelmm+402.22); // Se lineariza la señal del nivel del tanque
   }
 }
 
@@ -111,22 +110,23 @@ void loop(){
 
   currentTime = millis();
 
-  if (!digitalRead(SW_NOT_TANK) && digitalRead(SW_HI_LEVEL)){
+  if (!digitalRead(SW_NOT_TANK) && digitalRead(SW_HI_LEVEL)){   // Encendido del enfriador 
     digitalWrite(COOLER, LOW);
     status=1;
     errCode=0;
   } else{
-    digitalWrite(COOLER, HIGH);
+    digitalWrite(COOLER, HIGH);                                 //Apagado del enfriador
     status=2;
     if (digitalRead(SW_NOT_TANK))   errCode=10;
     if (!digitalRead(SW_HI_LEVEL))  errCode=30;
   }
 
   getTankLevel ();
-  if(levelmm<40  && !digitalRead(SW_NOT_TANK)){
+
+  if(levelmm<40  && !digitalRead(SW_NOT_TANK)){                 //Encendido bomba cuando el tanque esta lleno
     digitalWrite(PUMP, LOW);
   }
-  if(levelmm>85){
+  if(levelmm>85){                                               //Apagado bomba cuando el tanque esta vacio
     delay (2000);
     digitalWrite(PUMP, HIGH);
   }
@@ -137,7 +137,7 @@ void loop(){
     //printdata();
   }
   
-  if(currentTime-cloopTime2 >= 5000) {
+  if(currentTime-cloopTime2 >= 5000) {                          //Lectura del sensor de temperatura y humedad cada 5 segundos
     cloopTime2 = currentTime;
     for (int k=0;k<3;k++){
       tempAmb=dht.getTemperature();
