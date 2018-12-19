@@ -1,0 +1,6 @@
+{
+    "board": "arduino:avr:nano",
+    "sketch": "HumTx.ino",
+    "port": "COM10",
+    "configuration": "cpu=atmega328"
+}
