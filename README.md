@@ -13,10 +13,10 @@ Caracteristicas de fabrica
 
 
 Principales componentes internos:
-*Microcontrolador: Moteino USB R6
-*Sensor de nivel: HC-SR04
-*Sensor humedad-temperatura: DHT22
-Enfriador celda peltier: TEC01-12703
-Ventilador: TX8025L12S
-*Bomba: Mini sumergible bomba de agua DC 2.5-6V -- 120L/H
+- *Microcontrolador: Moteino USB R6
+- *Sensor de nivel: HC-SR04
+- *Sensor humedad-temperatura: DHT22
+- Enfriador celda peltier: TEC01-12703
+- Ventilador: TX8025L12S
+- *Bomba: Mini sumergible bomba de agua DC 2.5-6V -- 120L/H
 
