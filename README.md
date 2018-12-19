@@ -5,15 +5,18 @@ Se modifica el deshumedecedor para que vacie automaticamente el agua del recipie
 
 Caracteristicas de fabrica
 Modelo: DHM150
+Dimensiones: 21x17x13 cm
 Potencia: 25W
 Recipiente: 500mL
+Capacidad de remoción de humedad 200-300 ml/día
 
 
 
-Microcontrolador: Moteino USB R6
-Sensor de nivel: HC-SR04
-Sensor humedad-temperatura: DHT22
+Principales componentes internos:
+*Microcontrolador: Moteino USB R6
+*Sensor de nivel: HC-SR04
+*Sensor humedad-temperatura: DHT22
 Enfriador celda peltier: TEC01-12703
 Ventilador: TX8025L12S
-Bomba: Mini sumergible bomba de agua DC 2.5-6V -- 120L/H
+*Bomba: Mini sumergible bomba de agua DC 2.5-6V -- 120L/H
 
