@@ -4,11 +4,11 @@ Mod Deshumedecedor de closet DHM150 IMACO
 Se modifica el deshumedecedor para que vacie automaticamente el agua del recipiente interno y lo envie hacia un deposito externo, ademas se incorporo un sensor de humedad y temperatura del aire. Los datos del estado del humedecedor son enviados inalambricamente a un raspberry Pi.
 
 Caracteristicas de fabrica
-Modelo: DHM150
-Dimensiones: 21x17x13 cm
-Potencia: 25W
-Recipiente: 500mL
-Capacidad de remoción de humedad 200-300 ml/día
+- Modelo: DHM150
+- Dimensiones: 21x17x13 cm
+- Potencia: 25W
+- Recipiente: 500mL
+- Capacidad de remoción de humedad 200-300 ml/día
 
 
 
