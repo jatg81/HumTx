@@ -1,7 +1,7 @@
 # HumTx
 Mod Deshumedecedor de closet DHM150 IMACO
 
-Se modifica el deshumedecedor para que vacie automaticamente el agua del recipiente interno y lo envie hacia un deposito externo, ademas se incorporo un sensor de humedad y temperatura del aire. Los datos del estado del humedecedor son enviados inalambricamente a un raspberry Pi.
+Se modifica el deshumedecedor para que vacie automaticamente el agua del recipiente interno y lo envie hacia un deposito externo, ademas se incorporo un sensor de humedad y temperatura del aire. Los datos del estado del humedecedor son enviados inalambricamente a un Raspberry Pi (EmonPi).
 <p align="center">
   <img width="460" height="300" src="/docs/files/HumTx.png">
 </p>
