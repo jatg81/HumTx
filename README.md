@@ -23,3 +23,7 @@ Principales componentes internos:
 - Ventilador: TX8025L12S
 - *Bomba: Mini sumergible bomba de agua DC 2.5-6V -- 120L/H
 
+<p align="center">
+  <img width="460" height="300" src="/docs/files/HumTx int.png">
+</p>
+
