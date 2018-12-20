@@ -1,0 +1,61 @@
+#######################################
+# Syntax Coloring Map for Jeelib
+#######################################
+
+#######################################
+# Syntax Coloring Map Ports
+#######################################
+# TODO!
+
+#######################################
+# Syntax Coloring Map for RF69
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+#######################################
+# Methods and functions (KEYWORD2)
+#######################################
+rf69_initialize	    KEYWORD2
+rf12_config	    KEYWORD2
+rf69_recvDone	    KEYWORD2
+rf69_canSend	    KEYWORD2
+rf69_sendStart	    KEYWORD2
+rf69_sendNow        KEYWORD2
+rf69_sendWithRetry  KEYWORD2
+rf69_receiveStart   KEYWORD2
+rf69_sendNow	    KEYWORD2
+rf69_sleep	    KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+RF69_HDR_CTL	LITERAL1
+RF69_HDR_DST	LITERAL1
+RF69_HDR_ACK	LITERAL1
+RF69_HDR_MASK	LITERAL1
+RF69_MAXDATA	LITERAL1
+RF69_433MHZ	LITERAL1
+RF69_868MHZ	LITERAL1
+RF69_915MHZ	LITERAL1
+RF69_SLEEP	LITERAL1
+RF69_WAKEUP	LITERAL1
+
+#######################################
+# Macros (LITERAL2)
+#######################################
+RF69_WANTS_ACK	LITERAL1
+RF69_ACK_REPLY	LITERAL1
+
+#######################################
+# Variables (LITERAL2)
+#######################################
+rf69_buf	LITERAL2
+rf69_grp	LITERAL2
+rf69_hdr	LITERAL2
+rf69_len	LITERAL2
+rf69_data	LITERAL2
+rf69_crc	LITERAL2
+rf69_seq	LITERAL2
