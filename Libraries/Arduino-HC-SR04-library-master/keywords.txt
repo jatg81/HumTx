@@ -1,0 +1,33 @@
+HCSR04	KEYWORD1
+
+#public functions
+init	KEYWORD2
+
+setCalibration	KEYWORD2
+setOffset	KEYWORD2
+getCalibration	KEYWORD2
+getOffset	KEYWORD2
+
+readDisctance	KEYWORD2
+readDisctanceInMm	KEYWORD2
+readDisctanceInCm	KEYWORD2
+
+readAvgDisctanceInMm	KEYWORD2
+readAvgDisctanceInCm	KEYWORD2
+
+readAccurateDisctanceInMm	KEYWORD2
+readAccurateDisctanceInCm	KEYWORD2
+
+setDelayBetweenAvgMeasurementsInMs	KEYWORD2
+
+#private functions
+getDisctanceFromDurationInMm	KEYWORD2
+
+CM_IN_MM	KEYWORD3
+NO_CALIBRATION_NEEDED	KEYWORD3
+DEFAULT_CALIBRATION_MULTIPLIER	KEYWORD3
+NO_OFFSET	KEYWORD3
+DEFAULT_OFFSET	KEYWORD3
+
+#macro what can be override
+DEFAULT_DELAY_BETWEEN_AVG_MEASUREMENTS_IN_MS	KEYWORD3
