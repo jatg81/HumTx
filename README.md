@@ -5,6 +5,9 @@ Se modifica el deshumedecedor para que vacie automaticamente el agua del recipie
 
 ![HumTx](/docs/files/HumTx.png)
 
+<p align="center">
+  <img width="460" height="300" src="/docs/files/HumTx.png">
+</p>
 Caracteristicas de fabrica
 - Modelo: DHM150
 - Dimensiones: 21x17x13 cm
